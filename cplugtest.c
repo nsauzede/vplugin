@@ -18,13 +18,22 @@ typedef int (*plug_t)();
 #define PLUGIN_NAME "plugin/plugin.so"
 #endif
 
-int main() {
+int main(int argc, char *argv[]) {
 	char *fname = PLUGIN_NAME;
+	int arg = 1;
+	if (arg < argc) {
+		fname = argv[arg++];
+	}
+	printf("C loading plugin [%s]\n", fname);
 	void *h = dlopen(fname, RTLD_NOW);
-	printf("C loading plugin\n");
+	if (!h) {
+		printf("can't open plugin ?\n");
+		exit(1);
+	}
 	plug_t initialize = (plug_t)dlsym(h, "plugin__initialize");
 	plug_t cleanup = (plug_t)dlsym(h, "plugin__initialize");
 	if (!initialize || !cleanup) {
+		printf("bad plugin API ?\n");
 		exit(1);
 	}
 	printf("initialize plugin\n");

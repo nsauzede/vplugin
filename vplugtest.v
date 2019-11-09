@@ -11,6 +11,7 @@ fn main() {
 	fname := "plugin/plugin.so"
 	println('loading plugin')
 	h := dl.open(fname, dl.RTLD_NOW)
+//	println('handle=$h')
 	plugin := Plugin {
 		initialize:dl.sym(h, "plugin__initialize")
 		cleanup:dl.sym(h, "plugin__cleanup")

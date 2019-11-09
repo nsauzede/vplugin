@@ -41,13 +41,13 @@ check: all
 	@echo "============="
 	./cplugtest$(EXEXT)
 	@echo "============="
-	@echo PLUGTEST V
-	@echo "============="
-	$(V) run vplugtest.v
-	@echo "============="
 	@echo IMPTEST V
 	@echo "============="
 	$(V) run vimptest.v
+	@echo "============="
+	@echo PLUGTEST V
+	@echo "============="
+	$(V) run vplugtest.v
 
 clean:
 	$(RM) $(TARGET) vimptest$(EXEXT) vplugtest$(EXEXT)
