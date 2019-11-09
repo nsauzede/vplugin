@@ -8,7 +8,8 @@ WIN32 := 1
 endif
 
 ifdef WIN32
-SOEXT:=.dll
+#SOEXT:=.dll
+SOEXT:=.so
 EXEXT:=.exe
 else
 SOEXT:=.so
@@ -19,12 +20,16 @@ TARGET:=
 TARGET+=cplugtest$(EXEXT)
 TARGET+=plugin/plugin$(SOEXT)
 
+ifdef WIN32
+else
 LDLIBS+=-ldl
+endif
+
 V:=v
 
 all: $(TARGET)
 
-plugin/plugin.so: plugin/plugin.v
+plugin/plugin$(SOEXT): plugin/plugin.v
 	$(V) -shared $^
 
 %.exe: %.o
