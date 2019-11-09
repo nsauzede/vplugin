@@ -8,14 +8,14 @@ then to get the symbol address (dlsym) of a function, and then to run it.
 
 First compile the V plugin to obtain a regular C binding library :
 ```bash
-v -shared plugin.v
+v -shared plugin/plugin.v
 ```
 Note that the same plugin could be produced with another language, compiler
 etc..
 
 Then run the V test application :
 ```bash
-v run plugtest.v
+v run vplugtest.v
 ```
 
 Created by Nicolas Sauzede : https://github.com/nsauzede/vplugin
