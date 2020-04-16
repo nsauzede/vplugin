@@ -2,9 +2,11 @@ module main
 
 import dl
 
+type PluginFn fn() int
+
 struct Plugin {
-	initialize fn() int
-	cleanup fn() int
+	initialize PluginFn
+	cleanup PluginFn
 }
 
 fn main() {
