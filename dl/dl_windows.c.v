@@ -1,12 +1,11 @@
 module dl
 
-#include <windows.h>
-
 pub const (
 	RTLD_NOW = 0
 )
 
-fn C.LoadLibrary(byteptr) voidptr
+fn C.LoadLibraryA(libfilename byteptr) voidptr
+fn C.GetProcAddress(handle voidptr, procname byteptr) voidptr
 
 pub fn open(filename string, flags int) voidptr {
 //	println('filename=$filename')

@@ -2,6 +2,9 @@ module dl
 
 #include <dlfcn.h>
 
+fn C.dlopen(filename charptr, flags int) voidptr
+fn C.dlsym(handle voidptr, symbol charptr) voidptr
+
 pub const (
 	RTLD_NOW = C.RTLD_NOW
 )
